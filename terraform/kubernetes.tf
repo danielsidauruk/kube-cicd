@@ -15,7 +15,11 @@ module "gke" {
   source  = "terraform-google-modules/kubernetes-engine/google"
   version = "23.3.0"
 
-  depends_on = [google_project_service.this["container"]]
+  depends_on = [ 
+    google_project_service.this["container"],
+    google_project_service.this["servicenetworking"],
+    google_project_service.this["cloudresourcemanager"],
+  ]
 
   project_id = var.project_id
   region     = var.region
@@ -28,6 +32,8 @@ module "gke" {
   subnetwork        = local.subnetwork_name
   ip_range_pods     = "${local.subnetwork_name}-pods"
   ip_range_services = "${local.subnetwork_name}-services"
+
+  service_account = google_service_account.this.email
 
   node_pools = [
     {
@@ -46,8 +52,6 @@ module "gke" {
   http_load_balancing        = true
   create_service_account     = false
 
-  remove_default_node_pool = true
   initial_node_count       = 1
-
-  service_account = google_service_account.this.email
+  remove_default_node_pool = true
 }

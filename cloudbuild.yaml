@@ -9,19 +9,6 @@ steps:
         pip install flask
         python -m unittest discover
 
-  # - name: 'python'
-  #   entrypoint: 'python'
-  #   dir: './python'
-  #   args: ['-m', 'pip', 'install', '--upgrade', 'pip']
-
-  # - name: 'python'
-  #   entrypoint: 'python'
-  #   dir: './python'
-  #   args: [
-  #     'pip', 'install', 'flask',
-  #     '-m', 'unittest', 'discover',
-  #    ]
-
   - id : 'docker build python-app'
     name: 'gcr.io/cloud-builders/docker'
     dir: './python'
@@ -32,21 +19,21 @@ steps:
       '.'
     ]
 
-  - id : 'docker push hello python-app'
+  - id : 'docker push python-app'
     name: 'gcr.io/cloud-builders/docker'
     args: [
       'push', 
       'us-central1-docker.pkg.dev/${PROJECT_ID}/python-repo/python-app:${SHORT_SHA}'
     ]
 
-  # - id: 'deploy python-app to gke'
-  #   name: 'gcr.io/cloud-builders/gke-deploy'
-  #   dir: '/kubernetes'
-  #   args: [
-  #     'deploy',
-  #     '--dir=./',
-  #     '--cluster=${CLUSTER_NAME}',
-  #     '--region=${CLUSTER_LOCATION}',
-  #     '--zone=${CLUSTER_LOCATION}'
-  #   ]
+  - id: 'deploy python-app to gke'
+    name: 'gcr.io/cloud-builders/gke-deploy'
+    # dir: './kubernetes'
+    args: [
+      'deploy',
+      '--dir=./kubernetes',
+      '--cluster=${CLUSTER_NAME}',
+      '--region=${CLUSTER_LOCATION}',
+      '--zone=${CLUSTER_LOCATION}'
+    ]
 

@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "exalted-breaker-408409-tf-state"
-    prefix = "state"
+    bucket = "cicd-gke-tf-state"
+    prefix = "terraform/state"
   }
 }
