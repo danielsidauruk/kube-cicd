@@ -1,23 +1,26 @@
 steps:
-  # - id: 'python test python-app'
-  #   name: 'python'
-  #   dir: '/python'
-  #   entrypoint: 'bash'
-  #   args:
-  #     - '-c'
-  #     - |
-  #       pip install flask
-  #       python -m unittest discover
-
-  - name: 'python'
-    entrypoint: 'python'
+  - id: 'python test python-app'
+    name: 'python'
     dir: './python'
-    args: ['-m', 'pip', 'install', '--upgrade', 'pip']
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        pip install flask
+        python -m unittest discover
 
-  - name: 'python'
-    entrypoint: 'python'
-    dir: './python'
-    args: ['-m', 'unittest', 'discover']
+  # - name: 'python'
+  #   entrypoint: 'python'
+  #   dir: './python'
+  #   args: ['-m', 'pip', 'install', '--upgrade', 'pip']
+
+  # - name: 'python'
+  #   entrypoint: 'python'
+  #   dir: './python'
+  #   args: [
+  #     'pip', 'install', 'flask',
+  #     '-m', 'unittest', 'discover',
+  #    ]
 
   - id : 'docker build python-app'
     name: 'gcr.io/cloud-builders/docker'
