@@ -8,6 +8,8 @@ node_modules
 venv
 pyvenv.cfg
 __pycache__
+.pytest_cache
+
 package-lock.json
 
 # .tfstate files
