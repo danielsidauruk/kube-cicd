@@ -11,17 +11,17 @@ steps:
 
   - name: 'python'
     entrypoint: 'python'
-    dir: '/python'
+    dir: './python'
     args: ['-m', 'pip', 'install', '--upgrade', 'pip']
 
   - name: 'python'
     entrypoint: 'python'
-    dir: '/python'
+    dir: './python'
     args: ['-m', 'unittest', 'discover']
 
   - id : 'docker build python-app'
     name: 'gcr.io/cloud-builders/docker'
-    dir: '/python'
+    dir: './python'
     args: [
       'build',
       '-t',
