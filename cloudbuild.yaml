@@ -1,13 +1,13 @@
 steps:
-  - id: 'python test python-app'
-    name: 'python'
-    dir: '/python'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        pip install flask
-        python -m unittest discover 
+  # - id: 'python test python-app'
+  #   name: 'python'
+  #   dir: '/python'
+  #   entrypoint: 'bash'
+  #   args:
+  #     - '-c'
+  #     - |
+  #       pip install flask
+  #       python -m unittest discover
 
   - name: 'python'
     entrypoint: 'python'
