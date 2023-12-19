@@ -28,6 +28,7 @@ steps:
 
   - id: 'Setting Nginx Image Tag'
     name: ubuntu
+    dir: ./k8s
     args: ['bash','-c','sed -i "s,PYTHON_APP_IMAGE,us-central1-docker.pkg.dev/${PROJECT_ID}/python-repo/python-app:${SHORT_SHA}," deploy-gke.yaml']
 
   - id : 'deploy python-app to gke'
