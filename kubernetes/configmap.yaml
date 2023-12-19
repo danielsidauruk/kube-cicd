@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: python-app-cm
-data:
-  LINK: www.linkedin.com/in/danielsidauruk

@@ -13,7 +13,7 @@ locals {
 
 module "gke" {
   source  = "terraform-google-modules/kubernetes-engine/google"
-  version = "29.0.0"
+  version = "23.3.0"
 
   depends_on = [ 
     google_project_service.this["container"],
@@ -52,7 +52,7 @@ module "gke" {
   http_load_balancing        = true
   create_service_account     = false
 
-  initial_node_count       = 1
-  # initial_node_count       = 3
+  # initial_node_count       = 1
+  initial_node_count       = 3
   remove_default_node_pool = true
 }
