@@ -41,9 +41,9 @@ steps:
     dir: './k8s'
     args:
     - run
-    - --filename="*.yaml"
-    - --location=${_CLOUDSDK_COMPUTE_ZONE}
-    - --cluster=${_CLOUDSDK_CONTAINER_CLUSTER}
+    - '--filename=/*.yaml'
+    - '--location=${_CLOUDSDK_COMPUTE_ZONE}'
+    - '--cluster=${_CLOUDSDK_CONTAINER_CLUSTER}'
 
 substitutions:
   _CLUSTER: "gke-cluster"
