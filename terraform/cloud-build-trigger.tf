@@ -1,7 +1,6 @@
 resource "google_cloudbuild_trigger" "manual-trigger" {
   name        = var.trigger_name
-  description = "Trigger for Cloud Build"
-
+  
   depends_on = [google_project_service.this["cloudbuild"]]
 
   source_to_build {
@@ -20,4 +19,6 @@ resource "google_cloudbuild_trigger" "manual-trigger" {
   approval_config {
      approval_required = true 
   }
+
+  # service_account = google_service_account.this.email
 }

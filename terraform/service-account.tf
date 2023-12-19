@@ -1,6 +1,5 @@
 resource "google_service_account" "this" {
-  account_id   = var.service_account.name
-  display_name = "${var.service_account.name} Service Account"
+  account_id = var.service_account.name
 }
 
 resource "google_project_iam_member" "this" {
