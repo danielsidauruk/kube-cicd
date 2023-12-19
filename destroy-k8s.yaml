@@ -1,0 +1,12 @@
+steps:
+  - id: destroy-k8s
+    name: "gcr.io/cloud-builders/gke-deploy"
+    args:
+    - run
+    - --filename=./k8s/deploy-gke.yaml
+    - --location=${_LOCATION}
+    - --cluster=${_CLUSTER}
+
+substitutions:
+  _CLUSTER: "gke-cluster"
+  _LOCATION: "us-central1-a"

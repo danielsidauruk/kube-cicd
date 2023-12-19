@@ -1,49 +1,38 @@
 steps:
-  # - id: 'python test python-app'
-  #   name: 'python'
-  #   dir: './python'
-  #   entrypoint: 'bash'
-  #   args:
-  #     - '-c'
-  #     - |
-  #       pip install flask
-  #       python -m unittest discover
+  - id: 'python test python-app'
+    name: 'python'
+    dir: './python'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        pip install flask
+        python -m unittest discover
 
-  # - id : 'docker build python-app'
-  #   name: 'gcr.io/cloud-builders/docker'
-  #   dir: './python'
-  #   args: [
-  #     'build',
-  #     '-t',
-  #     'us-central1-docker.pkg.dev/${PROJECT_ID}/python-repo/python-app:${SHORT_SHA}',
-  #     '.'
-  #   ]
+  - id : 'docker build python-app'
+    name: 'gcr.io/cloud-builders/docker'
+    dir: './python'
+    args: [
+      'build',
+      '-t',
+      'us-central1-docker.pkg.dev/${PROJECT_ID}/python-repo/python-app:${SHORT_SHA}',
+      '.'
+    ]
 
-  # - id : 'docker push python-app'
-  #   name: 'gcr.io/cloud-builders/docker'
-  #   args: [
-  #     'push', 
-  #     'us-central1-docker.pkg.dev/${PROJECT_ID}/python-repo/python-app:${SHORT_SHA}'
-  #   ]
+  - id : 'docker push python-app'
+    name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'push', 
+      'us-central1-docker.pkg.dev/${PROJECT_ID}/python-repo/python-app:${SHORT_SHA}'
+    ]
 
-#- ----- working on -----
-  # - id: 'deploy-to-gke'
-  #   name: 'gcr.io/cloud-builders/kubectl'
-  #   dir: './k8s'
-  #   args:
-  #   - 'apply -f ./'
-  #   env:
-  #   - 'CLOUDSDK_COMPUTE_ZONE=${_LOCATION}'
-  #   - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
-  
-  - id : 'deploy to gke'
+  - id : 'deploy python-app to gke'
     name: "gcr.io/cloud-builders/gke-deploy"
-    dir: './k8s'
     args:
     - run
-    - '--filename=/*.yaml'
-    - '--location=${_CLOUDSDK_COMPUTE_ZONE}'
-    - '--cluster=${_CLOUDSDK_CONTAINER_CLUSTER}'
+    - --filename=./k8s/deploy-gke.yaml
+    - --location=${_LOCATION}
+    - --cluster=${_CLUSTER}
 
 substitutions:
   _CLUSTER: "gke-cluster"

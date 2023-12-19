@@ -1,4 +1,4 @@
-resource "google_cloudbuild_trigger" "manual-trigger" {
+resource "google_cloudbuild_trigger" "this" {
   name        = var.trigger_name
   
   depends_on = [google_project_service.this["cloudbuild"]]
@@ -15,10 +15,4 @@ resource "google_cloudbuild_trigger" "manual-trigger" {
     revision  = "refs/heads/main"
     repo_type = "GITHUB"
   }
-
-  approval_config {
-     approval_required = true 
-  }
-
-  # service_account = google_service_account.this.email
 }
