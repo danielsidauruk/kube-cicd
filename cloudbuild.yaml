@@ -26,14 +26,14 @@ steps:
       'us-central1-docker.pkg.dev/${PROJECT_ID}/python-repo/python-app:${SHORT_SHA}'
     ]
 
-  - id: 'deploy python-app to gke'
-    name: 'gcr.io/cloud-builders/gke-deploy'
-    # dir: './kubernetes'
-    args: [
-      'deploy',
-      '--dir=./kubernetes',
-      '--cluster=${CLUSTER_NAME}',
-      '--region=${CLUSTER_LOCATION}',
-      '--zone=${CLUSTER_LOCATION}'
-    ]
+  # - id: 'deploy python-app to gke'
+  #   name: 'gcr.io/cloud-builders/gke-deploy'
+  #   # dir: './kubernetes'
+  #   args: [
+  #     'deploy',
+  #     '--dir=./kubernetes',
+  #     '--cluster=${CLUSTER_NAME}',
+  #     '--region=${CLUSTER_LOCATION}',
+  #     '--zone=${CLUSTER_LOCATION}'
+  #   ]
 

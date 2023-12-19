@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: python-app-service
-anotations:
-  cloud.google.com/load-balancer-type: External
+  annotations:
+    cloud.google.com/load-balancer-type: "External"  # Note: Quotes around External
 spec:
   type: NodePort
   selector:
