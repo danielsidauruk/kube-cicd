@@ -8,5 +8,5 @@ steps:
     - --cluster=${_CLUSTER}
 
 substitutions:
-  _CLUSTER: "gke-cluster"
   _LOCATION: "us-central1-a"
+  _CLUSTER: "gke-cluster"
