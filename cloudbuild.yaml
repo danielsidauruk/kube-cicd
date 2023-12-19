@@ -26,6 +26,10 @@ steps:
       'us-central1-docker.pkg.dev/${PROJECT_ID}/python-repo/python-app:${SHORT_SHA}'
     ]
 
+  - id: 'Setting Nginx Image Tag'
+    name: ubuntu
+    args: ['bash','-c','sed -i "s,PYTHON_APP_IMAGE,us-central1-docker.pkg.dev/${PROJECT_ID}/python-repo/python-app:${SHORT_SHA}," deploy-gke.yaml']
+
   - id : 'deploy python-app to gke'
     name: "gcr.io/cloud-builders/gke-deploy"
     args:

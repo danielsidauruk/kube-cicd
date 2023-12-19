@@ -27,7 +27,8 @@ spec:
     spec:
       containers:
       - name: python-app
-        image: "us-central1-docker.pkg.dev/${PROJECT_ID}/python-repo/python-app:${SHORT_SHA}"
+        # image: "us-central1-docker.pkg.dev/${PROJECT_ID}/python-repo/python-app:${SHORT_SHA}"
+        image: PYTHON_APP_IMAGE
         imagePullPolicy: Always
         resources:
           requests:
