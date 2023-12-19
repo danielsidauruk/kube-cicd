@@ -13,4 +13,11 @@ resource "google_compute_subnetwork" "this" {
     range_name    = "${var.network.subnetwork_name}-service-range"
     ip_cidr_range = var.network.services_cidr_range
   }
+
+  lifecycle {
+    ignore_changes = [
+      secondary_ip_range,
+      ip_cidr_range,
+    ]
+  }
 }
