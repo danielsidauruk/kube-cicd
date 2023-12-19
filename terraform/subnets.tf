@@ -1,4 +1,4 @@
-resource "google_compute_subnetwork" "private" {
+resource "google_compute_subnetwork" "this" {
   name                     = var.network.subnetwork_name
   ip_cidr_range            = var.network.nodes_cidr_range
   region                   = var.region
