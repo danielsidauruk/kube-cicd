@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
       - name: python-app
-        image: us-central1-docker.pkg.dev/${PROJECT_ID}/python-repo/python-app:${SHORT_SHA}
-        # image: us-central1-docker.pkg.dev/cicd-gke-tf/python-repo/python-app:586ba90
+        # image: us-central1-docker.pkg.dev/${PROJECT_ID}/python-repo/python-app:${SHORT_SHA}
+        image: us-central1-docker.pkg.dev/cicd-gke-tf/python-repo/python-app:277dcf4
         imagePullPolicy: Always
         resources:
           requests:
