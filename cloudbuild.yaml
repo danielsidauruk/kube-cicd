@@ -41,7 +41,7 @@ steps:
     dir: './k8s'
     args:
     - run
-    - --filename=."./"
+    - --filename="*.yaml"
     - --location=${_CLOUDSDK_COMPUTE_ZONE}
     - --cluster=${_CLOUDSDK_CONTAINER_CLUSTER}
 
