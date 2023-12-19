@@ -40,8 +40,8 @@ steps:
     args:
     - 'apply -f ./'
     env:
-    - 'CLOUDSDK_COMPUTE_ZONE=${_CLUSTER}'
-    - 'CLOUDSDK_CONTAINER_CLUSTER=${_LOCATION}'
+    - 'CLOUDSDK_COMPUTE_ZONE=${_LOCATION}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLUSTER}'
 
 
 substitutions:
